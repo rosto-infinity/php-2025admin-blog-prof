@@ -13,7 +13,7 @@ try {
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // Message de succès
-    echo "<div style='background-color:#3c763d; color:white;'>Connexion à la base de données réussie</div>";
+    echo "<div style='background-color:#e6aaec;text-align:center; color:#8d079c;'>Connexion à la base de données réussie</div>";
 } catch (PDOException $e) {
     // Gérer les erreurs de connexion
     echo "<div style='color:red;'>La connexion à la base de données a échoué :</div> " . $e->getMessage();
