@@ -1,0 +1,462 @@
+/* Couleurs principales */
+:root {
+    --primary-color: #a117f1;
+    /* bleu-violet */
+    --secondary-color: #333;
+    /* Noir */
+    --background-color: #f4f4f4;
+    /* Gris clair */
+    --text-color: #333;
+    /* Noir */
+    --hover-color: #8d079c;
+    /* bleu-violet foncé */
+}
+
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+/* Navbar */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--primary-color);
+    padding: 10px 80px;
+    color: white;
+}
+
+nav .brand {
+    font-size: 1rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+nav .toggle-menu {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+nav .nav-menu {
+    display: flex;
+    list-style: none;
+}
+
+nav .nav-menu li {
+    position: relative;
+    margin-left: 20px;
+}
+
+nav .nav-menu li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+nav .nav-menu li a:hover {
+    background-color: var(--hover-color);
+}
+
+nav .nav-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--primary-color);
+    list-style: none;
+    padding: 0;
+}
+
+nav .nav-menu li:hover .nav-dropdown {
+    display: block;
+}
+
+nav .profile {
+    position: relative;
+    display: none;
+}
+
+nav .profile img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+nav .profile-link {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: var(--primary-color);
+    padding: 10px;
+    list-style: none;
+}
+
+nav .profile-link a {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 5px 0;
+}
+
+nav .profile-link a:hover {
+    background-color: var(--hover-color);
+}
+
+/* Styles pour les icônes */
+nav .icon {
+    font-size: 1.2rem;
+    margin-right: 8px;
+}
+
+nav .auth-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Menu d'authentification */
+nav .auth-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 15px;
+}
+
+nav .auth-item {
+    position: relative;
+}
+
+nav .auth-link {
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+nav .auth-link:hover {
+    color: #e2c1f5;
+    background-color: rgba(161, 23, 241, 0.05);
+    transform: translateY(-2px);
+}
+
+nav .auth-link i.icon {
+    font-size: 1.1rem;
+    margin-right: 8px;
+    color: #ffffff;
+}
+
+
+
+/* Mode Responsive */
+@media (max-width: 768px) {
+    nav {
+        padding: 10px;
+    }
+
+    nav .toggle-menu {
+        display: block;
+    }
+
+    nav .nav-menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--primary-color);
+    }
+
+    nav .nav-menu.active {
+        display: flex;
+    }
+
+    nav .nav-menu li {
+        margin: 0;
+    }
+
+    nav .nav-menu li a {
+        padding: 15px;
+    }
+
+    nav .profile-link {
+        right: 20px;
+    }
+
+    nav .auth-container {
+        gap: 15px;
+    }
+
+    nav .auth-menu {
+        gap: 10px;
+    }
+
+    nav .auth-link {
+        font-size: 0.9rem;
+        padding: 6px 10px;
+    }
+}
+
+
+
+/* Hero Section */
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    text-align: center;
+    padding: 0 80px;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+    font-weight: 900;
+    /* Poids moyen pour le titre */
+    color: var(--primary-color);
+    /* Titre en violet */
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    font-weight: 300;
+    /* Poids léger pour le texte */
+}
+
+.technologies {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.technologies span {
+    background-color: rgba(161, 23, 241, 0.1);
+    /* Fond léger violet */
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 1rem;
+    color: var(--primary-color);
+    /* Texte en violet */
+    font-weight: 300;
+    /* Poids léger pour les badges */
+}
+
+.cta-button {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 400;
+    /* Poids moyen pour le bouton */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: var(--hover-color);
+    color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .technologies span {
+        font-size: 0.9rem;
+    }
+
+    .cta-button {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}
+
+
+/* Section Articles */
+.articles-section {
+    padding: 50px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.articles-section h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    font-weight: 400;
+    /* Poids moyen pour le titre */
+    color: var(--primary-color);
+    /* Titre en violet */
+    text-align: center;
+}
+
+.articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    gap: 20px;
+}
+
+.article-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.article-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.article-image {
+    width: 100%;
+    /* Largeur de l'image à 100% du conteneur */
+    height: 200px;
+    /* Hauteur fixe de l'image */
+    object-fit: cover;
+    /* Redimensionne l'image pour couvrir toute la zone sans déformation */
+    object-position: center;
+    /* Centre l'image horizontalement et verticalement */
+    display: block;
+    /* Assure que l'image est traitée comme un bloc */
+    margin: 0 auto;
+    /* Centre l'image dans son conteneur */
+}
+
+
+.article-content {
+    padding: 20px;
+}
+
+.article-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    font-weight: 400;
+    /* Poids moyen pour le titre */
+    color: var(--secondary-color);
+    /* Titre en noir */
+}
+
+.article-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.article-category {
+    color: var(--primary-color);
+    /* Catégorie en violet */
+}
+
+.article-excerpt {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.article-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.read-more {
+    color: var(--primary-color);
+    /* background-color: var(--primary-color); */
+    padding: 5px 17px;
+    border-radius: 11px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 400;
+    /* Poids moyen pour le bouton */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.read-more:hover {
+    background-color: var(--hover-color);
+    color: white;
+}
+
+/* Style des icônes */
+.bx {
+    font-size: 1rem;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+/* Ajustement des éléments avec icônes */
+.article-meta span,
+.article-comments,
+.read-more {
+    display: inline-flex;
+    align-items: center;
+}
+
+.read-more .bx {
+    transition: transform 0.3s ease;
+}
+
+.read-more:hover .bx-chevron-right {
+    transform: translateX(3px);
+    /* Effet de déplacement au survol */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .articles-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .article-title {
+        font-size: 1.2rem;
+    }
+
+    .article-meta,
+    .article-excerpt,
+    .article-footer {
+        font-size: 0.8rem;
+    }
+
+    .read-more {
+        padding: 8px 16px;
+    }
+}
