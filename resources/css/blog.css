@@ -9,6 +9,7 @@
     --text-color: #333;
     /* Noir */
     --hover-color: #8d079c;
+   
     /* bleu-violet foncé */
 }
 
@@ -86,7 +87,7 @@ nav .nav-menu li:hover .nav-dropdown {
 
 nav .profile {
     position: relative;
-    display: none;
+    
 }
 
 nav .profile img {
@@ -101,13 +102,15 @@ nav .profile-link {
     position: absolute;
     top: 100%;
     right: 0;
-    background-color: var(--primary-color);
+    background-color:white;
+    box-shadow: 0 8px 25px rgba(161, 23, 241, 0.1);
     padding: 10px;
     list-style: none;
+    border-radius: 7px;
 }
 
 nav .profile-link a {
-    color: white;
+    color: black;
     text-decoration: none;
     display: flex;
     align-items: center;
@@ -115,7 +118,7 @@ nav .profile-link a {
 }
 
 nav .profile-link a:hover {
-    background-color: var(--hover-color);
+    color: var(--primary-color);;
 }
 
 /* Styles pour les icônes */

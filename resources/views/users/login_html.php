@@ -8,19 +8,38 @@
 
         <!-- Colonne de droite : Formulaire d'inscription -->
         <div class="form-container">
-            <form action="#" method="POST">
+            <form action="" method="POST">
+                 
+                <?php
+                if (!empty($success)) {
+                echo '<div style=" background:green; text-align:center; color:white; padding:2px 8px; font-size:25px;">'
+                    . reset($success) .
+                    '</div>';
+                }
+                 if (!empty($errors)) {
+
+                    echo '<div style=" background:red; text-align:center; color:white; padding:2px 8px; font-size:25px;">'
+                        . reset($errors) .
+                        '</div>';
+                    }
+                    ?>
+                
                 <div class="form-group">
                     <h2>Connection</h2>
-                    
+                    <?php if (isset($errors['email'])): ?>
+                        <p style='color:#f86262;'><?= $errors['email'] ?></p>
+                   <?php endif; ?>
                     <div class="input-group">
                         <i class='bx bxs-envelope icon'></i>
-                        <input type="email" name="email" placeholder="Email" required>
+                        <input type="text" name="email" placeholder="Email" >
                     </div>
+
+                    
                     <div class="input-group">
                         <i class='bx bxs-lock-alt icon'></i>
-                        <input type="password" name="password" placeholder="Mot de passe" required>
+                        <input type="password" name="password" placeholder="Mot de passe" >
                     </div>
-                    <button type="submit">Se connecter</button>
+                    <button type="submit" name="login">Se connecter</button>
                     
                     <!-- Liens d'authentification -->
                     <div class="auth-links">

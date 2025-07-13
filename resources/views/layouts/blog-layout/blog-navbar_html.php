@@ -18,8 +18,39 @@
         <li><a href="#"><i class='bx bxs-info-circle icon'></i> À propos</a></li>
         <li><a href="#"><i class='bx bxs-envelope icon'></i> Contact</a></li>
     </ul>
+    
+<?php
+        switch (true) {
+          case isset($_SESSION['auth']) && ($_SESSION['role'] == 'admin'):
+ ?>  
     <div class="auth-container">
-        <!-- Menu d'authentification -->
+       
+       <div class="profile" >
+                <img src="/publicAll/images/profil.png" alt="Photo de profil">
+                <div class="profile-link">
+                    <a href="/admin-dashboard.php"><i class='bx bxs-user-circle icon'></i> Dashboard</a>
+                    <a href="/logout.php"><i class='bx bxs-log-out-circle icon'></i> Déconnexion</a>
+                </div>
+       </div>
+        <?php
+            break;
+
+          case isset($_SESSION['auth']):
+          ?>
+
+      <div class="profile" >
+                <img src="/publicAll/images/profil.png" alt="Photo de profil">
+                <div class="profile-link">
+                    <a href="/user-dashboard.php"><i class='bx bxs-user-circle icon'></i> Dashboard</a>
+                    <a href="/logout.php"><i class='bx bxs-log-out-circle icon'></i> Déconnexion</a>
+                </div>
+       </div>
+
+           <?php
+            break;
+          default:
+          ?>
+    <!-- Menu d'authentification -->
         <ul class="auth-menu">
             <li class="auth-item">
                 <a href="/login.php" class="auth-link">
@@ -27,20 +58,18 @@
                     <span>Se connecter</span>
                 </a>
             </li>
+
             <li class="auth-item">
                 <a href="/register.php" class="auth-link">
                     <i class='bx bxs-user-plus icon'></i>
                     <span>S'enregistrer</span>
                 </a>
             </li>
-         </ul>
-        </div>
-    <div class="profile" >
-       
-        <img src="/publicAll/images/profil.png" alt="Photo de profil">
-        <div class="profile-link">
-            <a href=""><i class='bx bxs-user-circle icon'></i> Profil</a>
-            <a href="#"><i class='bx bxs-log-out-circle icon'></i> Déconnexion</a>
-        </div>
+        </ul>
     </div>
+    
+<?php
+ break;
+} 
+?>
 </nav>
