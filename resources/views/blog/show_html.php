@@ -24,7 +24,7 @@
 .sidebar {
     position: sticky;
     top: 20px;
-    width: 300px; /* Largeur fixe */
+    width: 350px; /* Largeur fixe */
     padding: 20px; /* Espace intérieur */
     background-color: var(--comment-bg); /* Couleur de fond */
     border-radius: 12px; /* Bordures arrondies */
@@ -37,6 +37,7 @@
 .sidebar h3 {
     color: var(--primary-color);
     margin-bottom: 15px;
+    margin-top: 25px;
     font-size: 1.2em;
     text-decoration: underline;
     display: flex;
@@ -66,8 +67,47 @@
     color: var(--hover-color);
 }
 
-.sidebar .stats {
-    margin-top: 20px;
+
+.stats {
+    background-color: #f9f9f9; /* Fond léger */
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Contour léger */
+    max-width: 400px; /* Largeur maximale */
+    margin: 20px auto; /* Centrage */
+}
+
+.stats h3 {
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.stats p {
+    font-size: 1.1em;
+    color: #555;
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.stats p i {
+    color: #007bff; /* Couleur des icônes */
+    font-size: 1.2em;
+}
+
+.stats p u {
+    font-weight: bold;
+    color: #333; /* Couleur des nombres soulignés */
+    text-decoration: none;
+    background-color: #e9ecef; /* Fond léger pour les nombres */
+    padding: 3px 8px;
+    border-radius: 4px;
 }
 
 .sidebar .stats p {
@@ -308,13 +348,13 @@ a:hover {
         <?php endforeach; ?>
     </ul>
 
-    <div class="stats">
-        <h3><i class="fas fa-chart-bar"></i> Statistiques</h3>
-        <p><i class="fas fa-users"></i> Nombre d'utilisateurs : <?= $usersCount ?></p>
-        <p><i class="fas fa-comments"></i> Nombre de commentaires : <?= $commentsCount ?></p>
-        <p><i class="fas fa-file-alt"></i> Nombre d'articles : <?= $articlesCount ?></p>
-        <p><i class="fas fa-tags"></i> Nombre de catégories : <?= $categoriesCount ?></p>
-    </div>
+   <div class="stats">
+    <h3><i class="fas fa-chart-bar"></i> Statistiques</h3>
+    <p><i class="fas fa-users"></i> Nombre d'utilisateurs : <u><?= $usersCount ?></u></p>
+    <p><i class="fas fa-comments"></i> Nombre de commentaires : <u><?= $commentsCount ?></u></p>
+    <p><i class="fas fa-file-alt"></i> Nombre d'articles : <u><?= $articlesCount ?></u></p>
+    <p><i class="fas fa-tags"></i> Nombre de catégories : <u><?= $categoriesCount ?></u></p>
+</div>
 
     <h3><i class="fas fa-newspaper"></i> Derniers articles</h3>
     <ul>

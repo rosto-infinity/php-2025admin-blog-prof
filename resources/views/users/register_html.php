@@ -3,7 +3,7 @@
         <!-- Colonne de gauche : Grande image avec superposition -->
         <div class="image-column">
             <div class="image-overlay"></div>
-            <img src="/publicAll/images/img1.png" alt="Image d'arrière-plan">
+            <img src="/publicAll/images/auth.png" alt="Image d'arrière-plan">
         </div>
 
         <!-- Colonne de droite : Formulaire d'inscription -->
