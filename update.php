@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update'])) {
     $password = trim($_POST['password'] ?? '');
     $confirm_password = trim($_POST['confirm_password'] ?? '');
 
-    // Validation du pseudo
+    // -Validation du pseudo
     if (empty($username) || !preg_match("#^[a-zA-Z0-9_]+$#", $username)) {
         $errors['username'] = "Pseudo non valide";
     } else {
