@@ -12,8 +12,7 @@ if (session_status() == PHP_SESSION_NONE) {
 	<link rel="stylesheet" href="/resources/css/style.css">
 	<link rel="stylesheet" href="/resources/css/add-update.css">
 	<!-- Ajouter Boxicons dans le head de votre fichier HTML -->
-	 <script src="https://cdn.tiny.cloud/1/votre-clé-api/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
-
+	
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
