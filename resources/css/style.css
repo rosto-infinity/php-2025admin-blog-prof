@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap');
 
 * {
-	font-family: 'Open Sans', sans-serif;
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
@@ -19,6 +18,13 @@
 	--dark-blue: #8d079c;
 	--red: #FC3B56;
 }
+@font-face {
+    font-family: 'Ubuntu';
+    src: url('/resources/fonts/OperatorMono-LightItalic.otf');
+    /* font-weight: normal;
+    font-style: normal; */
+}
+
 
 html {
 	overflow-x: hidden;
@@ -26,6 +32,7 @@ html {
 
 body {
 	background: var(--grey);
+  font-family: 'Ubuntu', sans-serif; /* Application de la police */
 	overflow-x: hidden;
 }
 

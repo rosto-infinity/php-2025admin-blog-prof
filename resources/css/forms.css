@@ -6,7 +6,17 @@
             --text-color: #333;
             --hover-color: #8d079c;
         }
+@font-face {
+    font-family: 'Ubuntu';
+    src: url('/resources/fonts/OperatorMono-LightItalic.otf');
+    /* font-weight: normal;
+    font-style: normal; */
+}
+* {
+	
+  font-family: 'Ubuntu', sans-serif; /* Application de la police */
 
+}
         /* Conteneur principal */
         .container-part {
             display: flex;
