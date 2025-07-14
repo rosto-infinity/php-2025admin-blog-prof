@@ -2,15 +2,26 @@
 session_start();
 require_once 'database/database.php';
 
-$error = "";
-$success = "";
+// Vérifiez les autorisations d'accès à la page
+if ($_SESSION['role'] !== 'admin') {
+  header('Location: index.php');
+  exit();
+
+}
+$messages = [
+    'errors' => [],
+    'success' => []
+];
+
 $article = []; // Initialisation de la variable article
 $currentImage = null; // Initialisation explicite
-// --tVérification et nettoyage des entrées
+
+// -- Vérification et nettoyage des entrées
 function clean_input($data)
 {
-  return htmlspecialchars(stripslashes(trim($data)));
+    return htmlspecialchars(stripslashes(trim($data)));
 }
+
 /**
  * Éditer un article existant
  */
@@ -36,12 +47,11 @@ if (isset($_POST['update'])) {
     // Récupération de l'ID et nettoyage
     $articleId = clean_input($_POST['id']);
     
-    // ----Nettoyage des entrées
-  $title = clean_input(filter_input(INPUT_POST, 'title', FILTER_DEFAULT));
-  $slug = strtolower(str_replace(' ', '-', $title)); // Mise à jour du slug à partir du titre
-  $introduction = clean_input(filter_input(INPUT_POST, 'introduction', FILTER_DEFAULT));
-  $content = clean_input(filter_input(INPUT_POST, 'content', FILTER_DEFAULT));
-  $articleId = clean_input(filter_input(INPUT_POST, 'id', FILTER_VALIDATE_INT));
+    // ---- Nettoyage des entrées
+    $title = clean_input(filter_input(INPUT_POST, 'title', FILTER_DEFAULT));
+    $slug = strtolower(str_replace(' ', '-', $title)); // Mise à jour du slug à partir du titre
+    $introduction = clean_input(filter_input(INPUT_POST, 'introduction', FILTER_DEFAULT));
+    $content = clean_input(filter_input(INPUT_POST, 'content', FILTER_DEFAULT));
 
     // Traitement de l'image uploadée
     if (isset($_FILES['a_image']) && $_FILES['a_image']['error'] === UPLOAD_ERR_OK) {
@@ -65,17 +75,16 @@ if (isset($_POST['update'])) {
             if (move_uploaded_file($_FILES['a_image']['tmp_name'], $destination)) {
                 $currentImage = $destination;
             } else {
-                $error = "Erreur lors du téléchargement de la nouvelle image";
+                $messages['errors'][] = "Erreur lors du téléchargement de la nouvelle image";
             }
         } else {
-            $error = "Format d'image non supporté. Utilisez JPG, PNG, GIF ou WEBP.";
+            $messages['errors'][] = "Format d'image non supporté. Utilisez JPG, PNG, GIF ou WEBP.";
         }
-    
     }
 
     // Validation des données
     if (empty($title) || empty($slug) || empty($introduction) || empty($content)) {
-        $error = $error ?: "Veuillez remplir tous les champs obligatoires du formulaire !";
+        $messages['errors'][] = "Veuillez remplir tous les champs obligatoires du formulaire !";
     } else {
         // Mise à jour de l'article dans la base de données
         $query = $pdo->prepare('UPDATE articles SET 
@@ -92,30 +101,28 @@ if (isset($_POST['update'])) {
             'slug' => $slug,
             'introduction' => $introduction,
             'content' => $content,
-            'image' => $currentImage, //-- Assurez-vous que le nom de colonne correspond à votre BDD
+            'image' => $currentImage, // Assurez-vous que le nom de colonne correspond à votre BDD
             'articleId' => $articleId
         ]);
         
         if ($query->rowCount() > 0) {
-            $success = "Article mis à jour avec succès!";
+            $messages['success'][] = "Article mis à jour avec succès!";
             // Rafraîchir les données
             $query = $pdo->prepare("SELECT * FROM articles WHERE id = ?");
             $query->execute([$articleId]);
             $article = $query->fetch(PDO::FETCH_ASSOC);
             $currentImage = $article['image'] ?? null;
         } else {
-            $error = $error ?: "Aucune modification détectée ou erreur lors de la mise à jour";
+            $messages['errors'][] = "Aucune modification détectée ou erreur lors de la mise à jour";
         }
     }
-     // --Redirection vers la page d'admin
-   header("Location: admin.php");
-   exit();
- 
 
+    // -- Redirection vers la page d'admin
+    header("Location: list-article.php");
+    exit();
 }
 
 $pageTitle = 'Éditer un article';
-
 
 // Début du tampon de la page de sortie
 ob_start();

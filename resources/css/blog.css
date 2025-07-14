@@ -12,7 +12,63 @@
    
     /* bleu-violet foncé */
 }
+  /* Style de la pagination */
+    .pagination-wrapper {
+        display: flex;
+        justify-content: center; /* Centre la pagination */
+        margin: 2rem 0; /* Espace autour de la pagination */
+        overflow-x: auto; /* Ajoute un défilement horizontal si nécessaire */
+        white-space: nowrap; /* Empêche le retour à la ligne des éléments */
+    }
 
+    .pagination {
+        display: flex;
+        list-style: none; /* Supprime les puces de la liste */
+        padding: 0;
+        margin: 0;
+    }
+
+    .pagination li {
+        margin: 0 0.5rem; /* Espace entre les éléments de pagination */
+    }
+
+    .pagination a {
+        display: inline-block;
+        padding: 0.5rem 1rem; /* Espacement interne */
+        background-color: #fff ; /* Couleur de fond */
+        color:var(--primary-color); /* Couleur du texte */
+        text-decoration: none; /* Supprime le soulignement */
+        border-radius: 5px; /* Coins arrondis */
+        transition: background-color 0.3s ease; /* Transition pour l'effet hover */
+    }
+
+    .pagination a:hover {
+        background-color: var(--hover-color); /* Couleur au survol */
+        color: #e2c1f5;
+    }
+
+    .pagination .active a {
+        background-color: var(--primary-color); /* Couleur pour l'élément actif */
+        color: #fff;
+        pointer-events: none; /* Désactive le clic sur l'élément actif */
+    }
+
+    .pagination .disabled a {
+        background-color: #ddd; /* Couleur pour les éléments désactivés */
+        color: #aaa; /* Couleur du texte pour les éléments désactivés */
+        pointer-events: none; /* Désactive le clic sur les éléments désactivés */
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .pagination a {
+            padding: 0.4rem 0.8rem; /* Ajustement du padding pour mobile */
+        }
+
+        .pagination li {
+            margin: 0 0.3rem; /* Réduction de l'espace entre les éléments */
+        }
+    }
 /* Reset CSS */
 * {
     margin: 0;
@@ -207,6 +263,7 @@ nav .auth-link i.icon {
 
     nav .nav-menu li a {
         padding: 15px;
+        font-size: 2em;
     }
 
     nav .profile-link {
@@ -246,7 +303,7 @@ nav .auth-link i.icon {
     margin-bottom: 10px;
     font-weight: 900;
     /* Poids moyen pour le titre */
-    color: var(--primary-color);
+    color:black;
     /* Titre en violet */
 }
 

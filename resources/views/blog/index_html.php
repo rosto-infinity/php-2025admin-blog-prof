@@ -25,9 +25,11 @@
          <?php foreach ($articles as $article): ?>
                 <div class="article-card">
                 <?php if (!empty($article['image'])): ?>  
-                   <img src="<?= htmlspecialchars($article['image']) ?>"
+                   <a href="article.php?id=<?= urlencode($article['id']); ?>">
+                    <img src="<?= htmlspecialchars($article['image']) ?>"
                      alt="<?= htmlspecialchars($article['title']) ?>" 
                      class="article-image">
+                   </a>
                  <?php endif; ?>
                     <div class="article-content">
                         <h3 class="article-title"><?= htmlspecialchars($article['title']) ?></h3>
@@ -44,19 +46,17 @@
                             <span class="article-comments">
                                 <i class='bx bx-comment-dots'></i> <?= $article['comment_count'] ?>  commentaire(s)
                             </span>
-                            <a href="#" class="read-more">
+                            <a href="article.php?id=<?= urlencode($article['id']); ?>" class="read-more">
                                 Lire<i class='bx bx-chevron-right'></i>
                             </a>
                         </div>
                     </div>
                 </div>
-        <?php endforeach; ?>
-         
-           <!-- Pagination -->
-        <nav class="pagination-wrapper">
-            <?= $paginator ?>
-        </nav>
-
-        </div>
+          <?php endforeach; ?>   
+    </div>
+    <!-- Pagination -->
+ <div class="pagination-wrapper">
+     <?= $paginator ?>
+ </div>
     </section>
 

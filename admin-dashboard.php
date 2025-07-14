@@ -2,7 +2,12 @@
 session_start();
 require_once "database/database.php";
 
+// Vérifiez les autorisations d'accès à la page
+if ($_SESSION['role'] !== 'admin') {
+  header('Location: index.php');
+  exit();
 
+}
 
 
 

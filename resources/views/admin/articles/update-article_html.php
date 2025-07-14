@@ -1,7 +1,23 @@
 
 <h1>Éditer un article</h1>
+<!-- Affichage des erreurs et succès -->
+<?php if (!empty($messages['errors'])): ?>
+    <div class="alert alert-danger">
+        <?php foreach ($messages['errors'] as $error): ?>
+            <p><?= $error ?></p>
+        <?php endforeach; ?>
+    </div>
+<?php endif; ?>
 
-<div style="background-color: white; padding: 10px;">
+<?php if (!empty($messages['success'])): ?>
+    <div class="alert alert-success">
+        <?php foreach ($messages['success'] as $success): ?>
+            <p><?= $success ?></p>
+        <?php endforeach; ?>
+    </div>
+<?php endif; ?>
+
+<div style="background-color: white; padding: 10px; margin-top: 15px;">
 
 
     <form method="POST" action="update-article.php?id=<?= $articleId ?>" enctype="multipart/form-data">
@@ -9,17 +25,17 @@
         
         <div class="form-control">
             <label for="title">Titre :</label>
-            <input type="text" name="title" id="title" value="<?= htmlspecialchars($title ?? '') ?>" required>
+            <input type="text" name="title" id="title" value="<?= htmlspecialchars($title ?? '') ?>" >
         </div>
         
         <div class="form-control">
             <label for="introduction">Introduction :</label>
-            <textarea name="introduction" id="introduction" required><?= htmlspecialchars($introduction ?? '') ?></textarea>
+            <textarea name="introduction" id="introduction" ><?= htmlspecialchars($introduction ?? '') ?></textarea>
         </div>
         
         <div class="form-control">
             <label for="content">Contenu :</label>
-            <textarea name="content" id="content" required><?= htmlspecialchars($content ?? '') ?></textarea>
+            <textarea name="content" id="content" ><?= htmlspecialchars($content ?? '') ?></textarea>
         </div>
         
         <div class="form-control">

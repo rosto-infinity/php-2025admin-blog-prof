@@ -1,7 +1,12 @@
 <?php
 session_start();
 require_once 'database/database.php';
+// Vérifiez les autorisations d'accès à la page
+if ($_SESSION['role'] !== 'admin') {
+  header('Location: index.php');
+  exit();
 
+}
 /**
  * Vérifie si l'ID de l'article est passé en GET, valide et existe dans la base de données.
  * Supprime l'article si toutes les vérifications sont réussies et redirige vers la page d'accueil.

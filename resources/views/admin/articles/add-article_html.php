@@ -1,17 +1,15 @@
-<!-- Ajouter Boxicons dans le head de votre fichier HTML -->
-<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-
-
-
 
 <div class="admin">
-   
+ 
+        <!-- Affichage des erreurs et succès -->
+        <?php if (!empty($error)): ?>
+            <div class="alert alert-danger">
+            
+                    <p><?= $error ?></p>
+            
+            </div>
+        <?php endif; ?>
 
-    <?php if (isset($error)) : ?>
-        <p style='color: #fff; padding: 10px; background: var(--primary-color); width: 400px;'><?= $error ?></p>
-    <?php endif; ?>
-
-    
     <form class="form" id="form" method="post" enctype="multipart/form-data" action="admin.php">
         <div class="form-control">
             <label for="title">Title:</label>
@@ -44,43 +42,3 @@
         </div>
     </form>
 </div>
-
-<h1>Nos articles</h1>
-<p>Il y a <?= count($allArticles); ?> articles</p>
-
-<table class="article-table">
-    <thead>
-        <tr>
-            <th>Image</th>
-            <th>Titre</th>
-            <th>Introduction</th>
-            <th>Date</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php foreach ($allArticles as $article) : ?>
-            <tr>
-                <td>
-                    <?php if (!empty($article['image'])) : ?>
-                        <img src="<?= $article['image'] ?>" alt="<?= htmlspecialchars($article['title']) ?>">
-                    <?php endif; ?>
-                </td>
-                <td><?= $article['title'] ?></td>
-                <td><?= $article['introduction'] ?></td>
-                <td><?= $article['created_at'] ?></td>
-                <td style="display: flex; justify-content: center; align-items: center; text-decoration: none;">
-                    <a href="article.php?id=<?= urlencode($article['id']); ?>">
-                        <i class='bx bx-show'></i>Show
-                    </a>
-                    <a href="update-article.php?id=<?= urlencode($article['id']); ?>">
-                        <i class='bx bx-edit'></i>Edit
-                    </a>
-                    <a href="delete-article.php?id=<?= urlencode($article['id']); ?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet article ?!')">
-                        <i class='bx bx-trash'></i>Del
-                    </a>
-                </td>
-            </tr>
-        <?php endforeach; ?>
-    </tbody>
-</table>

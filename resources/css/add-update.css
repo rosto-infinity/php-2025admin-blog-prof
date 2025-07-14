@@ -83,8 +83,8 @@
 
     .article-table th {
        
-        background-color: var(--primary-color);
-        color: #fff;
+        background-color:rgb(224, 200, 241);
+        color: #33013a;
     }
 
     .article-table tr:hover {

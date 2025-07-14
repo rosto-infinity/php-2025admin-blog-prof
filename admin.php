@@ -95,7 +95,7 @@ if (isset($_POST['add-article'])) {
   $title = clean_input($_POST['title']);
   $slug = createSlug($title);
   $introduction = clean_input($_POST['introduction']);
-  $content = clean_input($_POST['content']);
+  $content = $_POST['content'];
   $imagePath = null;
 
   // Traitement de l'image

@@ -46,6 +46,83 @@ li {
 
 
 
+    /* Style des alertes */
+    .alert {
+        padding: 1rem 1.5rem;
+        margin: 1.5rem 0;
+
+        border-radius: 8px;
+        font-family: 'Segoe UI', Roboto, sans-serif;
+        font-size: 0.95rem;
+        display: flex;
+        align-items: center;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        border-left: 5px solid transparent;
+        transition: all 0.3s ease;
+    }
+
+    /* Style spécifique pour les erreurs */
+    .alert-danger {
+        width: 100%;
+        max-width: 75%;
+        background-color: #FFF0F0;
+        color: #D32F2F;
+        border-left-color: #F44336;
+    }
+
+    /* Style spécifique pour les succès */
+    .alert-success {
+        width: 100%;
+        max-width: 75%;
+        background-color: #F0FFF4;
+        color: #2E7D32;
+        border-left-color: #4CAF50;
+    }
+
+    /* Icônes (optionnel - nécessite une librairie d'icônes) */
+    .alert:before {
+        font-family: 'Material Icons';
+        margin-right: 12px;
+        font-size: 1.5rem;
+    }
+
+    .alert-danger:before {
+        content: "error";
+    }
+
+    .alert-success:before {
+        content: "check_circle";
+    }
+
+    /* Animation d'apparition */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .alert {
+        animation: fadeIn 0.4s ease-out forwards;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .alert {
+            padding: 0.8rem 1rem;
+            font-size: 0.9rem;
+        }
+
+        .alert:before {
+            font-size: 1.2rem;
+        }
+    }
+
 
 
 
