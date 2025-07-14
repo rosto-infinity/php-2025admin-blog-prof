@@ -7,6 +7,13 @@
 **Prof Waffo lele rostand**
 
 ---
+📂 Projet-Blog-PHP/
+├── 📄 index.php          → [PHP] Accueil paginé
+├── 📄 article.php        → [HTML] Article complet
+├── 📂 resources/
+│   ├── 📂 views/         → [Templates] Dossiers blog/admin/users
+│   └── 📂 css/           → [CSS] Styles
+└── 📂 vendor/            → [Composer] Paginator et dépendances
 
 ## Description
 
