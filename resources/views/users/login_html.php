@@ -31,7 +31,7 @@
                    <?php endif; ?>
                     <div class="input-group">
                         <i class='bx bxs-envelope icon'></i>
-                        <input type="text" name="email" placeholder="Email" >
+                        <input type="text" name="email" placeholder="Email ou pseudo" >
                     </div>
 
                     

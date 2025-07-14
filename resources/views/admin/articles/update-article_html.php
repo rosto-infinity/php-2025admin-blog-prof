@@ -1,7 +1,7 @@
 <h1>Éditer un article</h1>
 
 
-<form method="POST" action="edit-article.php?id=<?= $articleId ?>" enctype="multipart/form-data">
+<form method="POST" action="update-article.php?id=<?= $articleId ?>" enctype="multipart/form-data">
     <input type="hidden" name="id" value="<?= $articleId ?>">
     
     <div class="form-group">

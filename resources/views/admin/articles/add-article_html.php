@@ -220,13 +220,13 @@
                 <td><?= $article['created_at'] ?></td>
                 <td style="display: flex; justify-content: center; align-items: center; text-decoration: none;">
                     <a href="article.php?id=<?= urlencode($article['id']); ?>">
-                        <i class='bx bx-show'></i>
+                        <i class='bx bx-show'></i>Show
                     </a>
-                    <a href="edit-article.php?id=<?= urlencode($article['id']); ?>">
-                        <i class='bx bx-edit'></i>
+                    <a href="update-article.php?id=<?= urlencode($article['id']); ?>">
+                        <i class='bx bx-edit'></i>Edit
                     </a>
                     <a href="delete-article.php?id=<?= urlencode($article['id']); ?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet article ?!')">
-                        <i class='bx bx-trash'></i>
+                        <i class='bx bx-trash'></i>Del
                     </a>
                 </td>
             </tr>

@@ -15,8 +15,8 @@
                         <p style='color:#f86262;'><?= $errors['username'] ?></p>
                    <?php endif; ?>
                     <div class="input-group">
-                        <i class='bx /publicAll/images/img1.pngbxs-user icon'></i>
-                        <input type="text" name="username" placeholder="Nom d'utilisateur" 
+                        <i class='bx bxs-user icon'></i>
+                        <input type="text" name="username" placeholder="pseudo" 
                         value="<?= isset($_POST['username']) ? $_POST['username'] : '' ?>"
                         >
                     </div>

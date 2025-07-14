@@ -1,7 +1,7 @@
 <!-- resources/views/layouts/blog-layout/blog-navbar_html.php -->
 <nav>
     <div class="brand">
-        <a href="index.php">
+        <a href="index.php" style="color:white">
             <i class='bx bxs-home icon'></i> Blog PHP-Stage
         </a>
     </div>
