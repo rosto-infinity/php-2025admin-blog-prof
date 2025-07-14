@@ -29,7 +29,7 @@ if (isset($_GET['id'])) {
     exit();
 }
 
-// Traitement du formulaire de mise à jour
+// -Traitement du formulaire de mise à jour
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update'])) {
     // Récupération et nettoyage des données
     $username = trim($_POST['username'] ?? '');
