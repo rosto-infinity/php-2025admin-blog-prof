@@ -68,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update'])) {
         $errors['password'] = "Les mots de passe ne correspondent pas";
     }
 
-    // Mise à jour des informations de l'utilisateur
+    // -Mise à jour des informations de l'utilisateur
     if (empty($errors)) {
         $query = "UPDATE users SET username = ?, email = ?";
         $params = [$username, $email];
