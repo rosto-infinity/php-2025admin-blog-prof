@@ -11,7 +11,7 @@ if (!isset($_SESSION['auth']) || empty($_SESSION['auth'])) {
 $errors = [];
 $success = [];
 
-// Récupération des informations de l'utilisateur
+// -Récupération des informations de l'utilisateur
 if (isset($_GET['id'])) {
     $userId = $_SESSION['auth']['id'];
 
