@@ -20,6 +20,20 @@ WHERE article_id = :article_id";
 $query = $pdo->prepare($sql);
 $query->execute(compact('article_id'));
 $commentaires  = $query->fetchAll();
+
+// Récupérer les catégories
+$categories = $pdo->query("SELECT * FROM categories")->fetchAll(PDO::FETCH_ASSOC);
+
+// Récupérer les statistiques
+$usersCount = $pdo->query("SELECT COUNT(*) AS count FROM users")->fetch(PDO::FETCH_ASSOC)['count'];
+$commentsCount = $pdo->query("SELECT COUNT(*) AS count FROM comments")->fetch(PDO::FETCH_ASSOC)['count'];
+$articlesCount = $pdo->query("SELECT COUNT(*) AS count FROM articles")->fetch(PDO::FETCH_ASSOC)['count'];
+$categoriesCount = $pdo->query("SELECT COUNT(*) AS count FROM categories")->fetch(PDO::FETCH_ASSOC)['count'];
+
+// Récupérer les 5 derniers articles
+$latestArticles = $pdo->query("SELECT * FROM articles ORDER BY created_at DESC LIMIT 5")->fetchAll(PDO::FETCH_ASSOC);
+
+
 // / 1--On affiche le titre autre
 
 $pageTitle = 'Accueil des articles';

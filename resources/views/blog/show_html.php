@@ -1,3 +1,5 @@
+
+
 <style>
 
   :root {
@@ -10,15 +12,123 @@
     --comment-bg: #ffffff;
 }
 
+.error-message {
+    color: red;
+    background-color: #ffe6e6;
+    padding: 10px;
+    border: 1px solid red;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+/* Sidebar Styles */
+.sidebar {
+    position: sticky;
+    top: 20px;
+    width: 300px; /* Largeur fixe */
+    padding: 20px; /* Espace intérieur */
+    background-color: var(--comment-bg); /* Couleur de fond */
+    border-radius: 12px; /* Bordures arrondies */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); /* Ombre douce */
+    margin-left: 20px; /* Marge à gauche */
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Contour léger */
+    height: fit-content;
+}
+
+.sidebar h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 1.2em;
+    text-decoration: underline;
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Espace entre l'icône et le texte */
+}
+
+.sidebar ul {
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Espace entre l'icône et le texte */
+}
+
+.sidebar ul li a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.sidebar ul li a:hover {
+    color: var(--hover-color);
+}
+
+.sidebar .stats {
+    margin-top: 20px;
+}
+
+.sidebar .stats p {
+    margin: 5px 0;
+    font-size: 0.9em;
+    color: var(--secondary-color);
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Espace entre l'icône et le texte */
+}
+
+/* Icônes avec FontAwesome */
+.sidebar h3 i,
+.sidebar ul li i,
+.sidebar .stats p i {
+    font-size: 1em;
+    color: var(--primary-color);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        margin-left: 0;
+        margin-bottom: 20px;
+    }
+}
 
 
+/* Conteneur principal */
 .container {
     padding: 20px 100px;
     background-color: #fff;
     border-radius: 8px;
     margin-bottom: 20px;
+    display: flex; /* Ajouté pour une mise en page flexible */
+    justify-content: space-between; /* Espacement entre les colonnes */
 }
+/* Contenu principal */
+.main-content {
+    flex: 1; /* Permet au contenu principal de prendre l'espace restant */
+    margin-right: 20px; /* Espace entre le contenu principal et la sidebar */
+}
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; /* Empile les éléments sur les petits écrans */
+        padding: 20px;
+    }
 
+    .sidebar {
+        width: 100%;
+        float: none;
+        margin-left: 0;
+        margin-bottom: 20px;
+    }
+
+    .main-content {
+        margin-right: 0;
+    }
+}
 h1.article-title {
     color: var(--primary-color);
     font-size: 2.5em;
@@ -130,57 +240,88 @@ a:hover {
 }
 
 </style>
-
+    
 <div class="container">
-    <h1 class="article-title"><?= htmlspecialchars($article['title']) ?></h1>
+    <div class="main-content">
+        <h1 class="article-title"><?= htmlspecialchars($article['title']) ?></h1>
+        
+        <?php if (isset($_SESSION['error'])) : ?>
+            <div class="error-message"><?= $_SESSION['error'] ?></div>
+        <?php endif; ?>
+         
+        <p><?= nl2br(htmlspecialchars($article['content'])) ?></p>
+        <em>Posté le <?= htmlspecialchars($article['created_at']) ?></em><br>
 
-    <p><?= nl2br(htmlspecialchars($article['content'])) ?></p>
-    <em>Posté le <?= htmlspecialchars($article['created_at']) ?></em><br>
+        <?php if (count($commentaires) === 0) : ?>
+            <h2 class="comment-heading">
+                Il n'y a pas encore de commentaires pour cet article... <strong>SOYEZ LE PREMIER ! :D</strong>
+            </h2>
+        <?php else : ?>
+            <h2 class="comment-heading">
+                Il y a déjà <?= count($commentaires) ?> réaction<?= count($commentaires) > 1 ? 's' : '' ?> :
+            </h2>
 
-    <?php if (count($commentaires) === 0) : ?>
-        <h2 class="comment-heading">
-            Il n'y a pas encore de commentaires pour cet article... <strong>SOYEZ LE PREMIER ! :D</strong>
-        </h2>
-    <?php else : ?>
-        <h2 class="comment-heading">
-            Il y a déjà <?= count($commentaires) ?> réaction<?= count($commentaires) > 1 ? 's' : '' ?> :
-        </h2>
+            <?php foreach ($commentaires as $commentaire) : ?>
+                <div class="comment">
+                    <h3 class="comment-author">Commentaire de : <?= htmlspecialchars($commentaire['username']) ?></h3>
+                    <small class="comment-date"><?= htmlspecialchars($commentaire['created_at']) ?></small>
+                    <blockquote class="comment-content">
+                        <em><?= nl2br(htmlspecialchars($commentaire['content'])) ?></em>
+                    </blockquote>
 
-        <?php foreach ($commentaires as $commentaire) : ?>
-            <div class="comment">
-                <h3 class="comment-author">Commentaire de : <?= htmlspecialchars($commentaire['username']) ?></h3>
-                <small class="comment-date"><?= htmlspecialchars($commentaire['created_at']) ?></small>
-                <blockquote class="comment-content">
-                    <em><?= nl2br(htmlspecialchars($commentaire['content'])) ?></em>
-                </blockquote>
+                    <?php if (isset($_SESSION['auth']) && $_SESSION['auth']['id'] === $commentaire['user_id']) : ?>
+                        <a 
+                            href="delete-comment.php?id=<?= $commentaire['id'] ?>&article_id=<?= $article_id ?>" 
+                            class="delete-comment-link"
+                            onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce commentaire ?')"
+                        >
+                            Supprimer
+                        </a>
+                    <?php endif; ?>
+                </div>
+            <?php endforeach; ?>
+        <?php endif; ?>
 
-                <?php if (isset($_SESSION['auth']) && $_SESSION['auth']['id'] === $commentaire['user_id']) : ?>
-                    <a 
-                        href="delete-comment.php?id=<?= $commentaire['id'] ?>&article_id=<?= $article_id ?>" 
-                        class="delete-comment-link"
-                        onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce commentaire ?')"
-                    >
-                        Supprimer
-                    </a>
-                <?php endif; ?>
-            </div>
+        <?php if (isset($_SESSION['auth'])) : ?>
+            <!-- Formulaire de commentaire -->
+            <form action="save-comment.php" method="POST" class="comment-form">
+                <h3 class="comment-form-heading">Vous voulez réagir ? N'hésitez pas !</h3>
+               
+                <textarea name="content" cols="30" rows="10" placeholder="Votre commentaire..." class="comment-form-content"></textarea><br>
+                <input type="hidden" name="article_id" value="<?= $article_id ?>">
+                <input type="hidden" name="user_id" value="<?= $_SESSION['auth']['id'] ?>">
+                <button style="width: 250px; margin-bottom: 11px;" type="submit" class="comment-form-submit">COMMENTER !</button>
+            </form>
+        <?php else : ?>
+            <p>Veuillez vous connecter ou vous inscrire pour commenter.</p>
+            <a href="register.php">S'inscrire</a> | <a href="login.php">Se connecter</a>
+        <?php endif; ?>
+
+        <p><a href="index.php">← Retour à l'accueil</a></p>
+    </div>
+
+   <div class="sidebar">
+    <h3><i class="fas fa-folder"></i> Catégories</h3>
+    <ul>
+        <?php foreach ($categories as $category) : ?>
+            <li><i class="fas fa-tag"></i><a href="category.php?id=<?= $category['id'] ?>"><?= htmlspecialchars($category['name']) ?></a></li>
         <?php endforeach; ?>
-    <?php endif; ?>
+    </ul>
 
-    <?php if (isset($_SESSION['auth'])) : ?>
-        <!-- Formulaire de commentaire -->
-        <form action="save-comment.php" method="POST" class="comment-form">
-            <h3 class="comment-form-heading">Vous voulez réagir ? N'hésitez pas !</h3>
+    <div class="stats">
+        <h3><i class="fas fa-chart-bar"></i> Statistiques</h3>
+        <p><i class="fas fa-users"></i> Nombre d'utilisateurs : <?= $usersCount ?></p>
+        <p><i class="fas fa-comments"></i> Nombre de commentaires : <?= $commentsCount ?></p>
+        <p><i class="fas fa-file-alt"></i> Nombre d'articles : <?= $articlesCount ?></p>
+        <p><i class="fas fa-tags"></i> Nombre de catégories : <?= $categoriesCount ?></p>
+    </div>
 
-            <textarea name="content" cols="30" rows="10" placeholder="Votre commentaire..." class="comment-form-content"></textarea><br>
-            <input type="hidden" name="article_id" value="<?= $article_id ?>">
-            <input type="hidden" name="user_id" value="<?= $_SESSION['auth']['id'] ?>">
-            <button type="submit" class="comment-form-submit">COMMENTER !</button>
-        </form>
-    <?php else : ?>
-        <p>Veuillez vous connecter ou vous inscrire pour commenter.</p>
-        <a href="register.php">S'inscrire</a> | <a href="login.php">Se connecter</a>
-    <?php endif; ?>
+    <h3><i class="fas fa-newspaper"></i> Derniers articles</h3>
+    <ul>
+        <?php foreach ($latestArticles as $article) : ?>
+            <li><i class="fas fa-file"></i><a href="article.php?id=<?= $article['id'] ?>"><?= htmlspecialchars($article['title']) ?></a></li>
+        <?php endforeach; ?>
+    </ul>
+</div>
 
-    <p><a href="index.php">← Retour à l'accueil</a></p>
 </div>

@@ -35,5 +35,5 @@ $query = $pdo->prepare('DELETE FROM articles WHERE id = :id');
 $query->execute(['id' => $id]);
 
 // 4.- Redirection vers la page d'accueil
-header("Location: admin.php");
+header("Location: list-article.php");
 exit();

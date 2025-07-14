@@ -14,7 +14,7 @@
 				</ul>
 			</li>
 			<li><a href="#"><i class='bx bxs-chart icon' ></i> Categories</a></li>
-			<li><a href="#"><i class='bx bxs-widget icon' ></i> Commentaires</a></li>
+			<li><a href="/list-comment.php"><i class='bx bxs-widget icon' ></i> Commentaires</a></li>
 			<li style="color:gray">Stagères</li>
 			<li>
 				<a href="/list-users.php"><i class='bx bxs-notepad icon' ></i> Users 
