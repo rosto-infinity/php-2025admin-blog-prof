@@ -1,6 +1,6 @@
 <?php
 if (session_status() == PHP_SESSION_NONE) {
-  session_start();
+    session_start();
 }
 ?>
 <!DOCTYPE html>
@@ -15,11 +15,11 @@ if (session_status() == PHP_SESSION_NONE) {
 	<title>Stage Admin-blog PHP 2025 - <?= htmlspecialchars($pageTitle) ?></title>
 </head>
 <body>
-  <?php include('sidebar-user_html.php') ?>
+  <?php include 'sidebar-user_html.php'?>
   
 	<!-- SECTION -->
 	<section id="content">
-    <?php include('header_html.php') ?>
+    <?php include 'header_html.php'?>
    
     <main>
      <?= $pageContent ?>
@@ -28,7 +28,7 @@ if (session_status() == PHP_SESSION_NONE) {
   	</section>
 	<!-- End -SECTION -->
 
-		<?php include('footer_html.php') ?>
+		<?php include 'footer_html.php'?>
 
 </body>
 </html>

@@ -67,10 +67,10 @@
 <div class="comment-container">
     <h1>Commentaires par utilisateur</h1>
     
-    <?php if (empty($users)): ?>
+    <?php if (empty($users)) { ?>
         <p class="alert alert-info">Aucun utilisateur trouvé.</p>
-    <?php else: ?>
-        <?php foreach ($users as $user): ?>
+    <?php } else { ?>
+        <?php foreach ($users as $user) { ?>
             <div class="user-section mb-4">
                 <!-- Affiche le nom + nombre de commentaires -->
                 <h2 class="username">
@@ -78,29 +78,29 @@
                     <span class="badge bg-secondary"><?= $user['comment_count'] ?> commentaire(s)</span>
                 </h2>
                 
-                <?php if (empty($user['comments'])): ?>
+                <?php if (empty($user['comments'])) { ?>
                     <p class="alert alert-warning">Aucun commentaire.</p>
-                <?php else: ?>
+                <?php } else { ?>
                     <ul class="comment-list">
-                        <?php foreach ($user['comments'] as $comment): ?>
+                        <?php foreach ($user['comments'] as $comment) { ?>
                             <li class="comment-item">
                                 <p class="comment-content"><?= htmlspecialchars($comment['content']) ?></p>
                                 <div class="comment-meta">
                                     <span class="comment-date">Posté le : <?= $comment['created_at'] ?></span>
                                     <!-- Lien vers l'article -->
-                                    <?php if (!empty($comment['article_id'])): ?>
+                                    <?php if (! empty($comment['article_id'])) { ?>
                                         <a href="article.php?id=<?= urlencode($comment['article_id']) ?>" class="article-link">
                                             → Voir l'article : <?= htmlspecialchars($comment['article_title']) ?>
                                         </a>
-                                    <?php endif; ?>
+                                    <?php } ?>
                                 </div>
                             </li>
-                        <?php endforeach; ?>
+                        <?php } ?>
                     </ul>
-                <?php endif; ?>
+                <?php } ?>
             </div>
-        <?php endforeach; ?>
-    <?php endif; ?>
+        <?php } ?>
+    <?php } ?>
 </div>
 
 

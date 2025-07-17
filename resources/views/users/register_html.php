@@ -11,9 +11,9 @@
             <form action="" method="POST">
                 <div class="form-group">
                     <h2>Inscription</h2>
-                    <?php if (isset($errors['username'])): ?>
+                    <?php if (isset($errors['username'])) { ?>
                         <p style='color:#f86262;'><?= $errors['username'] ?></p>
-                   <?php endif; ?>
+                   <?php } ?>
                     <div class="input-group">
                         <i class='bx bxs-user icon'></i>
                         <input type="text" name="username" placeholder="pseudo" 
@@ -21,18 +21,18 @@
                         >
                     </div>
 
-                     <?php if (isset($errors['email'])): ?>
+                     <?php if (isset($errors['email'])) { ?>
                         <p style='color:#f86262;'><?= $errors['email'] ?></p>
-                   <?php endif; ?>
+                   <?php } ?>
                     <div class="input-group">
                         <i class='bx bxs-envelope icon'></i>
                         <input type="email" name="email" placeholder="Email"
                          value="<?= isset($_POST['email']) ? $_POST['email'] : '' ?>">
                     </div>
 
-                    <?php if (isset($errors['password'])): ?>
+                    <?php if (isset($errors['password'])) { ?>
                         <p style='color:#f86262;'><?= $errors['password'] ?></p>
-                   <?php endif; ?>
+                   <?php } ?>
                     <div class="input-group">
                         <i class='bx bxs-lock-alt icon'></i>
                         <input type="password" name="password" placeholder="Mot de passe" >

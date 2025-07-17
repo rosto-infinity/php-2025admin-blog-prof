@@ -22,15 +22,15 @@
         <h2>Derniers Articles</h2>
         <div class="articles-grid">
            
-         <?php foreach ($articles as $article): ?>
+         <?php foreach ($articles as $article) { ?>
                 <div class="article-card">
-                <?php if (!empty($article['image'])): ?>  
+                <?php if (! empty($article['image'])) { ?>  
                    <a href="article.php?id=<?= urlencode($article['id']); ?>">
                     <img src="<?= htmlspecialchars($article['image']) ?>"
                      alt="<?= htmlspecialchars($article['title']) ?>" 
                      class="article-image">
                    </a>
-                 <?php endif; ?>
+                 <?php } ?>
                     <div class="article-content">
                         <h3 class="article-title"><?= htmlspecialchars($article['title']) ?></h3>
                         <div class="article-meta">
@@ -52,7 +52,7 @@
                         </div>
                     </div>
                 </div>
-          <?php endforeach; ?>   
+          <?php } ?>   
     </div>
     <!-- Pagination -->
  <div class="pagination-wrapper">

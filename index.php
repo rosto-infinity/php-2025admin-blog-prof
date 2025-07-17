@@ -1,13 +1,14 @@
 <?php
+
 session_start();
-require_once "database/database.php";
+require_once 'database/database.php';
 // Initialisation du Paginator
 require_once 'vendor/autoload.php';
 
 use JasonGrimes\Paginator;
 
 // Requête comptant le total d'articles
-$totalQuery = $pdo->query("SELECT COUNT(*) FROM articles");
+$totalQuery = $pdo->query('SELECT COUNT(*) FROM articles');
 $totalItems = $totalQuery->fetchColumn();
 
 $itemsPerPage = 12; // Nombre d'articles par page
@@ -40,10 +41,6 @@ $paginator = new Paginator(
     $currentPage,
     '?page=(:num)' // Format de l'URL
 );
-
-
-
-
 
 $pageTitle = 'Page  Dashboard';
 

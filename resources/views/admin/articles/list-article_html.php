@@ -42,19 +42,19 @@ button:hover {
 <p>Il y a <?= count($allArticles); ?> articles</p>
 
 <!-- Affichage des erreurs et succès -->
-<?php if (!empty($errors)): ?>
+<?php if (! empty($errors)) { ?>
     <div class="alert alert-danger">
-        <?php foreach ($errors as $error): ?>
+        <?php foreach ($errors as $error) { ?>
             <p><?= $error ?></p>
-        <?php endforeach; ?>
+        <?php } ?>
     </div>
-<?php endif; ?>
+<?php } ?>
 
-<?php if (isset($success['update'])): ?>
+<?php if (isset($success['update'])) { ?>
     <div class="alert alert-success">
         <p><?= $success['update'] ?></p>
     </div>
-<?php endif; ?>
+<?php } ?>
 <form method="POST" action="">
     <input type="text" name="search" placeholder="Rechercher un article..." value="<?= htmlspecialchars($searchTerm) ?>">
     <button type="submit">Rechercher</button>
@@ -75,12 +75,12 @@ button:hover {
         </tr>
     </thead>
     <tbody>
-        <?php foreach ($allArticles as $article) : ?>
+        <?php foreach ($allArticles as $article) { ?>
             <tr>
                 <td>
-                    <?php if (!empty($article['image'])) : ?>
+                    <?php if (! empty($article['image'])) { ?>
                         <img src="<?= $article['image'] ?>" alt="<?= htmlspecialchars($article['title']) ?>">
-                    <?php endif; ?>
+                    <?php } ?>
                 </td>
                 <td><?= htmlspecialchars($article['title']) ?></td>
                 <td><?= htmlspecialchars($article['introduction']) ?></td>
@@ -97,6 +97,6 @@ button:hover {
                     </a>
                 </td>
             </tr>
-        <?php endforeach; ?>
+        <?php } ?>
     </tbody>
 </table>

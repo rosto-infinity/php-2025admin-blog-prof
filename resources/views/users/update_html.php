@@ -193,42 +193,42 @@
 
 
 <!-- Affichage des erreurs et succès -->
-<?php if (!empty($errors)): ?>
+<?php if (! empty($errors)) { ?>
     <div class="alert alert-danger">
-        <?php foreach ($errors as $error): ?>
+        <?php foreach ($errors as $error) { ?>
             <p><?= $error ?></p>
-        <?php endforeach; ?>
+        <?php } ?>
     </div>
-<?php endif; ?>
+<?php } ?>
 
-<?php if (isset($success['update'])): ?>
+<?php if (isset($success['update'])) { ?>
     <div class="alert alert-success">
         <p><?= $success['update'] ?></p>
     </div>
-<?php endif; ?>
+<?php } ?>
 <form action="" method="POST" class="form-group-update">
     <h2>Profil de  :  <?= isset($_POST['username']) ? $_POST['username'] : $user['username'] ?></h2>
-    <?php if (isset($errors['username'])): ?>
+    <?php if (isset($errors['username'])) { ?>
         <p style='color:#f86262;'><?= $errors['username'] ?></p>
-    <?php endif; ?>
+    <?php } ?>
     <div class="input-group-update">
         <i class='bx /publicAll/images/img1.pngbxs-user icon'></i>
         <input type="text" name="username" placeholder="Nom d'utilisateur"
             value="<?= isset($_POST['username']) ? $_POST['username'] : $user['username'] ?>">
     </div>
 
-    <?php if (isset($errors['email'])): ?>
+    <?php if (isset($errors['email'])) { ?>
         <p style='color:#f86262;'><?= $errors['email'] ?></p>
-    <?php endif; ?>
+    <?php } ?>
     <div class="input-group-update">
         <i class='bx bxs-envelope icon'></i>
         <input type="email" name="email" placeholder="Email"
             value="<?= isset($_POST['email']) ? $_POST['email'] : $user['email'] ?>">
     </div>
 
-    <?php if (isset($errors['password'])): ?>
+    <?php if (isset($errors['password'])) { ?>
         <p style='color:#f86262;'><?= $errors['password'] ?></p>
-    <?php endif; ?>
+    <?php } ?>
     <div class="input-group-update">
         <i class='bx bxs-lock-alt icon'></i>
         <input type="password" name="password" placeholder="Mot de passe">

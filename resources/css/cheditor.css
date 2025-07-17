@@ -1,0 +1,20 @@
+/* Cheditor minimal CSS */
+iframe {
+    background: #fff;
+    border-radius: 4px;
+}
+div[cheditor-toolbar] {
+    margin-bottom: 8px;
+}
+button {
+    background: #a117f1;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 4px 8px;
+    margin-right: 2px;
+    cursor: pointer;
+}
+button:hover {
+    background: #8d079c;
+}

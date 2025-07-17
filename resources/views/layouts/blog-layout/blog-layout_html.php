@@ -15,13 +15,13 @@
     <!-- Navbar -->
    
 
-    <?php include('blog-navbar_html.php') ?>
+    <?php include 'blog-navbar_html.php'?>
    
     <main>
    
      <?= $pageContent ?>
    </main>
-    <?php include('blog-footer_html.php') ?>
+    <?php include 'blog-footer_html.php'?>
 
   
 </body>

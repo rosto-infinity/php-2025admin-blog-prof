@@ -285,23 +285,23 @@ a:hover {
     <div class="main-content">
         <h1 class="article-title"><?= htmlspecialchars($article['title']) ?></h1>
         
-        <?php if (isset($_SESSION['error'])) : ?>
+        <?php if (isset($_SESSION['error'])) { ?>
             <div class="error-message"><?= $_SESSION['error'] ?></div>
-        <?php endif; ?>
+        <?php } ?>
          
         <p><?= nl2br(htmlspecialchars($article['content'])) ?></p>
         <em>Posté le <?= htmlspecialchars($article['created_at']) ?></em><br>
 
-        <?php if (count($commentaires) === 0) : ?>
+        <?php if (count($commentaires) === 0) { ?>
             <h2 class="comment-heading">
                 Il n'y a pas encore de commentaires pour cet article... <strong>SOYEZ LE PREMIER ! :D</strong>
             </h2>
-        <?php else : ?>
+        <?php } else { ?>
             <h2 class="comment-heading">
                 Il y a déjà <?= count($commentaires) ?> réaction<?= count($commentaires) > 1 ? 's' : '' ?> :
             </h2>
 
-            <?php foreach ($commentaires as $commentaire) : ?>
+            <?php foreach ($commentaires as $commentaire) { ?>
                 <div class="comment">
                     <h3 class="comment-author">Commentaire de : <?= htmlspecialchars($commentaire['username']) ?></h3>
                     <small class="comment-date"><?= htmlspecialchars($commentaire['created_at']) ?></small>
@@ -309,7 +309,7 @@ a:hover {
                         <em><?= nl2br(htmlspecialchars($commentaire['content'])) ?></em>
                     </blockquote>
 
-                    <?php if (isset($_SESSION['auth']) && $_SESSION['auth']['id'] === $commentaire['user_id']) : ?>
+                    <?php if (isset($_SESSION['auth']) && $_SESSION['auth']['id'] === $commentaire['user_id']) { ?>
                         <a 
                             href="delete-comment.php?id=<?= $commentaire['id'] ?>&article_id=<?= $article_id ?>" 
                             class="delete-comment-link"
@@ -317,12 +317,12 @@ a:hover {
                         >
                             Supprimer
                         </a>
-                    <?php endif; ?>
+                    <?php } ?>
                 </div>
-            <?php endforeach; ?>
-        <?php endif; ?>
+            <?php } ?>
+        <?php } ?>
 
-        <?php if (isset($_SESSION['auth'])) : ?>
+        <?php if (isset($_SESSION['auth'])) { ?>
             <!-- Formulaire de commentaire -->
             <form action="save-comment.php" method="POST" class="comment-form">
                 <h3 class="comment-form-heading">Vous voulez réagir ? N'hésitez pas !</h3>
@@ -332,10 +332,10 @@ a:hover {
                 <input type="hidden" name="user_id" value="<?= $_SESSION['auth']['id'] ?>">
                 <button style="width: 250px; margin-bottom: 11px;" type="submit" class="comment-form-submit">COMMENTER !</button>
             </form>
-        <?php else : ?>
+        <?php } else { ?>
             <p>Veuillez vous connecter ou vous inscrire pour commenter.</p>
             <a href="register.php">S'inscrire</a> | <a href="login.php">Se connecter</a>
-        <?php endif; ?>
+        <?php } ?>
 
         <p><a href="index.php">← Retour à l'accueil</a></p>
     </div>
@@ -343,9 +343,9 @@ a:hover {
    <div class="sidebar">
     <h3><i class="fas fa-folder"></i> Catégories</h3>
     <ul>
-        <?php foreach ($categories as $category) : ?>
+        <?php foreach ($categories as $category) { ?>
             <li><i class="fas fa-tag"></i><a href="category.php?id=<?= $category['id'] ?>"><?= htmlspecialchars($category['name']) ?></a></li>
-        <?php endforeach; ?>
+        <?php } ?>
     </ul>
 
    <div class="stats">
@@ -358,9 +358,9 @@ a:hover {
 
     <h3><i class="fas fa-newspaper"></i> Derniers articles</h3>
     <ul>
-        <?php foreach ($latestArticles as $article) : ?>
+        <?php foreach ($latestArticles as $article) { ?>
             <li><i class="fas fa-file"></i><a href="article.php?id=<?= $article['id'] ?>"><?= htmlspecialchars($article['title']) ?></a></li>
-        <?php endforeach; ?>
+        <?php } ?>
     </ul>
 </div>
 

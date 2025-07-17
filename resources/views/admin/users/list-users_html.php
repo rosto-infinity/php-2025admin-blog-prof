@@ -114,9 +114,9 @@
 <div class="admin-container">
     <h1>Liste des utilisateurs</h1>
     
-    <?php if (empty($users)): ?>
+    <?php if (empty($users)) { ?>
         <div class="alert alert-info">Aucun utilisateur trouvé</div>
-    <?php else: ?>
+    <?php } else { ?>
         <div class="table-responsive">
             <table class="table table-striped">
                 <thead>
@@ -131,7 +131,7 @@
                     </tr>
                 </thead>
                <tbody>
-    <?php foreach ($users as $user): ?>
+    <?php foreach ($users as $user) { ?>
         <tr>
             <td><?= htmlspecialchars($user['id']) ?></td>
             <td><?= htmlspecialchars($user['username']) ?></td>
@@ -156,10 +156,10 @@
                 </a>
             </td>
         </tr>
-    <?php endforeach; ?>
+    <?php } ?>
 </tbody>
 
             </table>
         </div>
-    <?php endif; ?>
+    <?php } ?>
 </div>

@@ -1,21 +1,21 @@
 
 <h1>Éditer un article</h1>
 <!-- Affichage des erreurs et succès -->
-<?php if (!empty($messages['errors'])): ?>
+<?php if (! empty($messages['errors'])) { ?>
     <div class="alert alert-danger">
-        <?php foreach ($messages['errors'] as $error): ?>
+        <?php foreach ($messages['errors'] as $error) { ?>
             <p><?= $error ?></p>
-        <?php endforeach; ?>
+        <?php } ?>
     </div>
-<?php endif; ?>
+<?php } ?>
 
-<?php if (!empty($messages['success'])): ?>
+<?php if (! empty($messages['success'])) { ?>
     <div class="alert alert-success">
-        <?php foreach ($messages['success'] as $success): ?>
+        <?php foreach ($messages['success'] as $success) { ?>
             <p><?= $success ?></p>
-        <?php endforeach; ?>
+        <?php } ?>
     </div>
-<?php endif; ?>
+<?php } ?>
 
 <div style="background-color: white; padding: 10px; margin-top: 15px;">
 
@@ -42,7 +42,7 @@
             <label for="a_image">Image de l'article :</label>
             <input type="file" name="a_image" id="a_image" accept="image/*">
             
-            <?php if (!empty($currentImage)): ?>
+            <?php if (! empty($currentImage)) { ?>
                 <div class="current-image">
                     <img src="<?= $currentImage ?>" alt="Image actuelle" style="max-width: 200px;">
                     <label>
@@ -50,7 +50,7 @@
                         Supprimer cette image
                     </label>
                 </div>
-            <?php endif; ?>
+            <?php } ?>
         </div>
         
     

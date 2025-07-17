@@ -1,10 +1,7 @@
 <?php
+
 session_start();
-require_once "database/database.php";
-
-
-
-
+require_once 'database/database.php';
 
 $pageTitle = 'Page  d\'accueil user';
 

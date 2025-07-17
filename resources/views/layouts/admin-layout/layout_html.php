@@ -1,6 +1,6 @@
 <?php
 if (session_status() == PHP_SESSION_NONE) {
-  session_start();
+    session_start();
 }
 ?>
 <!DOCTYPE html>
@@ -16,14 +16,15 @@ if (session_status() == PHP_SESSION_NONE) {
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<script src="/resources/ckeditor/ckeditor.js"></script>
 	<title>Stage Admin-blog PHP 2025 - <?= htmlspecialchars($pageTitle) ?></title>
 </head>
 <body>
-  <?php include('sidebar_html.php') ?>
+  <?php include 'sidebar_html.php'?>
   
 	<!-- SECTION -->
 	<section id="content">
-    <?php include('header_html.php') ?>
+    <?php include 'header_html.php'?>
    
     <main>
      <?= $pageContent ?>
@@ -32,7 +33,7 @@ if (session_status() == PHP_SESSION_NONE) {
   	</section>
 	<!-- End -SECTION -->
 
-		<?php include('footer_html.php') ?>
+		<?php include 'footer_html.php'?>
 
 </body>
 </html>

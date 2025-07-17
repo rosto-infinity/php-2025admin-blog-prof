@@ -11,24 +11,24 @@
             <form action="" method="POST">
                  
                 <?php
-                if (!empty($success)) {
-                echo '<div style=" background:green; text-align:center; color:white; padding:2px 8px; font-size:25px;">'
-                    . reset($success) .
-                    '</div>';
+                if (! empty($success)) {
+                    echo '<div style=" background:green; text-align:center; color:white; padding:2px 8px; font-size:25px;">'
+                        .reset($success).
+                        '</div>';
                 }
-                 if (!empty($errors)) {
+                if (! empty($errors)) {
 
                     echo '<div style=" background:red; text-align:center; color:white; padding:2px 8px; font-size:25px;">'
-                        . reset($errors) .
+                        .reset($errors).
                         '</div>';
-                    }
-                    ?>
+                }
+                ?>
                 
                 <div class="form-group">
                     <h2>Connection</h2>
-                    <?php if (isset($errors['email'])): ?>
+                    <?php if (isset($errors['email'])) { ?>
                         <p style='color:#f86262;'><?= $errors['email'] ?></p>
-                   <?php endif; ?>
+                   <?php } ?>
                     <div class="input-group">
                         <i class='bx bxs-envelope icon'></i>
                         <input type="text" name="email" placeholder="Email ou pseudo" >

@@ -21,8 +21,8 @@
     
 <?php
         switch (true) {
-          case isset($_SESSION['auth']) && ($_SESSION['role'] == 'admin'):
- ?>  
+            case isset($_SESSION['auth']) && ($_SESSION['role'] == 'admin'):
+                ?>  
     <div class="auth-container">
        
        <div class="profile" >
@@ -33,10 +33,10 @@
                 </div>
        </div>
         <?php
-            break;
+                           break;
 
-          case isset($_SESSION['auth']):
-          ?>
+            case isset($_SESSION['auth']):
+                ?>
 
       <div class="profile" >
                 <img src="/publicAll/images/profil.png" alt="Photo de profil">
@@ -47,9 +47,9 @@
        </div>
 
            <?php
-            break;
-          default:
-          ?>
+                  break;
+            default:
+                ?>
     <!-- Menu d'authentification -->
         <ul class="auth-menu">
             <li class="auth-item">
@@ -70,6 +70,6 @@
     
 <?php
  break;
-} 
+        }
 ?>
 </nav>
